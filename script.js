@@ -25,6 +25,17 @@ const GameBoard = (() => {
     }
 })();
 
+const Game = (() => {
+    const start = () => {
+        GameBoard.render();
+    }
+
+    return {
+        start,
+        
+    }
+})();
+
 startFormBtn.addEventListener("click", () => {
     startFormBtn.classList.add('active');
     playerForm.classList.add('active');
@@ -34,5 +45,5 @@ playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
     playerForm.classList.remove('active');
     overlay.classList.remove('active');
-    GameBoard.render();
+    Game.start();
 })

@@ -25,14 +25,32 @@ const GameBoard = (() => {
     }
 })();
 
+const createPlayer = (name, symbol) => {
+    return (
+        name,
+        symbol
+    )
+}
+
 const Game = (() => {
+    let players = [];
+    let currentPlayerIndex;
+    let gameOver;
+
     const start = () => {
+        players = [
+            createPlayer(document.getElementById("player1").value, "X"),
+            createPlayer(document.getElementById("player2").value, "O")
+        ];
+        currentPlayerIndex = 0;
+        gameOver = false;
+        
         GameBoard.render();
     }
 
     return {
         start,
-        
+
     }
 })();
 

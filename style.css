@@ -9,10 +9,12 @@ html {
 
 body {
     height: 100%;
+    background-color: black;
 }
 
 header {
     text-align: center;
+    color: white;
 }
 
 .startFormBtn {
@@ -92,4 +94,19 @@ form>button {
 
 .overlay.active {
     display: block;
+}
+
+.gameBoard {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 200px));
+    grid-template-rows: repeat(3, minmax(80px, 200px));
+    justify-content: center;
+}
+
+.square {
+    border: 3px solid white;
 }

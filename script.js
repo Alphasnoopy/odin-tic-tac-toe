@@ -14,22 +14,40 @@ const GameBoard = (() => {
     let gameboard = ["", "", "", "", "", "", "", "", ""];
 
     const render = () => {
+        const gameBoardHTML = document.querySelector(".gameBoard");
+        gameBoardHTML.innerHTML = "";
+
         gameboard.forEach((square, index) => {
-            document.querySelector(".gameBoard").appendChild(newNode(square, index));
+            gameBoardHTML.appendChild(newNode(square, index));
         });
+
+        const squares = document.querySelectorAll(".square");
+        squares.forEach((square) => {
+            square.addEventListener("click", Game.handleClick);
+    })
+    }
+
+    const update = (index, value) => {
+        if (gameboard[index] === "") {
+            gameboard[index] = value;
+            render();
+
+            return true;
+        }
+        return false;
     }
 
     return {
         render,
-
+        update,
     }
 })();
 
 const createPlayer = (name, symbol) => {
-    return (
+    return {
         name,
-        symbol
-    )
+        symbol,
+    }
 }
 
 const Game = (() => {
@@ -48,9 +66,18 @@ const Game = (() => {
         GameBoard.render();
     }
 
+    const handleClick = (e) => {
+        let index = e.target.id.split("-")[1];
+        let value = players[currentPlayerIndex].symbol;
+        let playerChange = GameBoard.update(index, value);
+        if (playerChange) {
+            currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
+        }
+    }
+
     return {
         start,
-
+        handleClick,
     }
 })();
 

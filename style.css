@@ -102,11 +102,16 @@ form>button {
     right: 0px;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(80px, 200px));
-    grid-template-rows: repeat(3, minmax(80px, 200px));
+    grid-template-columns: repeat(3, minmax(1ch, 200px));
+    grid-template-rows: repeat(3, minmax(1ch, 200px));
     justify-content: center;
 }
 
 .square {
     border: 3px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
 }

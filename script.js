@@ -15,6 +15,7 @@ const GameBoard = (() => {
 
     const render = () => {
         const gameBoardHTML = document.querySelector(".gameBoard");
+
         gameBoardHTML.innerHTML = "";
 
         gameboard.forEach((square, index) => {
@@ -37,9 +38,21 @@ const GameBoard = (() => {
         return false;
     }
 
+    const getGameboard = () => {return gameboard}
+
+    const disable = () => {
+        const squares = document.querySelectorAll('.square');
+
+        squares.forEach((square) => {
+            square.removeEventListener("click", Game.handleClick);
+        })
+    }
+
     return {
         render,
         update,
+        getGameboard,
+        disable,
     }
 })();
 
@@ -48,6 +61,28 @@ const createPlayer = (name, symbol) => {
         name,
         symbol,
     }
+}
+
+const checkWin = (board) => {
+    const winList = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+
+    for (let i = 0; i < winList.length; i++) {
+        let [a, b, c] = winList[i];
+ 
+        if (board[a] === board[b] && board[b] === board[c] && board[a] !== "") {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+const checkTie = (board) => {
+    return board.every(square => square !== "");
 }
 
 const Game = (() => {
@@ -70,8 +105,19 @@ const Game = (() => {
         let index = e.target.id.split("-")[1];
         let value = players[currentPlayerIndex].symbol;
         let playerChange = GameBoard.update(index, value);
-        if (playerChange) {
-            currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
+
+        if (checkWin(GameBoard.getGameboard())) {
+            console.log("win");
+            GameBoard.disable();
+            gameOver = true;
+        }
+        else if (checkTie(GameBoard.getGameboard())) {
+            gameOver = true;
+        }
+        else {
+            if (playerChange) {
+                currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
+            }
         }
     }
 

@@ -98,6 +98,24 @@ form>button {
 
 .gameSection {
     display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.playerScore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 45px;
+}
+
+.score {
+    font-size: 55px;
+}
+
+.gameSection > div {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;

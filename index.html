@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
+    
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
@@ -28,10 +30,22 @@
             <button type="submit" class="startGame">Let's Begin</button>
         </form>
         <div class="gameSection">
-            <div class="gameBoard"></div>
-            <div class="gameButtons">
-                <button id="clear">CLEAR</button>
-                <button id="reset">RESET</button>
+            <div class="playerScore">
+                <i class="las la-chevron-down"></i>                
+                <span>Player X:</span>
+                <span class="score">0</span>
+            </div>
+            <div>
+                <div class="gameBoard"></div>
+                <div class="gameButtons">
+                    <button id="clear">CLEAR</button>
+                    <button id="reset">RESET</button>
+                </div>
+            </div>
+            <div class="playerScore">
+                <i class="las la-chevron-down"></i>                
+                <span>Player O:</span>
+                <span class="score">0</span>
             </div>
         </div>
     </main>

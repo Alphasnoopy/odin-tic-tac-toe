@@ -96,11 +96,27 @@ form>button {
     display: block;
 }
 
+.gameSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gameButtons {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+}
+
+.gameButtons button {
+    font-size: 25px;
+    color: white;
+    background: none;
+    border: none;
+}
+
 .gameBoard {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, minmax(1ch, 200px));
     grid-template-rows: repeat(3, minmax(1ch, 200px));

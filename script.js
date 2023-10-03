@@ -59,13 +59,6 @@ const GameBoard = (() => {
     }
 })();
 
-const createPlayer = (name, symbol) => {
-    return {
-        name,
-        symbol,
-    }
-}
-
 const checkWin = (board) => {
     const winList = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -94,10 +87,7 @@ const Game = (() => {
     let gameOver;
 
     const start = () => {
-        players = [
-            createPlayer(document.getElementById("player1").value, "X"),
-            createPlayer(document.getElementById("player2").value, "O")
-        ];
+        players = ['X', 'O'];
         currentPlayerIndex = 0;
         gameOver = false;
         
@@ -112,7 +102,7 @@ const Game = (() => {
 
     const handleClick = (e) => {
         let index = e.target.id.split("-")[1];
-        let value = players[currentPlayerIndex].symbol;
+        let value = players[currentPlayerIndex];
         let playerChange = GameBoard.update(index, value);
 
         if (checkWin(GameBoard.getGameboard())) {
@@ -136,14 +126,4 @@ const Game = (() => {
     }
 })();
 
-startFormBtn.addEventListener("click", () => {
-    startFormBtn.classList.add('active');
-    playerForm.classList.add('active');
-})
-
-playerForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    playerForm.classList.remove('active');
-    overlay.classList.remove('active');
-    Game.start();
-})
+Game.start();

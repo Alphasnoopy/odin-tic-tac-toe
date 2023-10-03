@@ -48,11 +48,14 @@ const GameBoard = (() => {
         })
     }
 
+    const clear = () => {gameboard = ["", "", "", "", "", "", "", "", ""]}
+
     return {
         render,
         update,
         getGameboard,
         disable,
+        clear,
     }
 })();
 
@@ -73,7 +76,7 @@ const checkWin = (board) => {
     for (let i = 0; i < winList.length; i++) {
         let [a, b, c] = winList[i];
  
-        if (board[a] === board[b] && board[b] === board[c] && board[a] !== "") {
+        if (board[a] === board[b] && board[b] === board[c] && board[a] !== "") {       
             return true;
         }
     }
@@ -99,6 +102,12 @@ const Game = (() => {
         gameOver = false;
         
         GameBoard.render();
+
+        const reset = document.getElementById('reset');
+        reset.addEventListener("click", () =>{
+            GameBoard.clear();
+            start();
+        })
     }
 
     const handleClick = (e) => {
@@ -107,9 +116,9 @@ const Game = (() => {
         let playerChange = GameBoard.update(index, value);
 
         if (checkWin(GameBoard.getGameboard())) {
+            gameOver = true;
             console.log("win");
             GameBoard.disable();
-            gameOver = true;
         }
         else if (checkTie(GameBoard.getGameboard())) {
             gameOver = true;

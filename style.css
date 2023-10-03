@@ -102,16 +102,35 @@ form>button {
     gap: 50px;
 }
 
-.playerScore {
+.player {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    font-size: 45px;
+    font-size: 20px;
 }
 
-.score {
-    font-size: 55px;
+.turn{
+    visibility: hidden;
+    font-size: 40px;
+}
+
+.turn.active {
+    visibility: visible;
+    animation-name: floating;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% {transform: translate(0, 0px);}
+    50% {transform: translate(0, 15px);}
+    100% {transform: translate(0, -0px);}
+}
+
+.symbol {
+    font-size: 65px;
 }
 
 .gameSection > div {

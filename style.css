@@ -140,13 +140,7 @@ form>button {
     gap: 20px;
 }
 
-.gameButtons {
-    display: flex;
-    justify-content: center;
-    gap: 150px;
-}
-
-.gameButtons button {
+#reset {
     font-size: 25px;
     color: white;
     background: none;

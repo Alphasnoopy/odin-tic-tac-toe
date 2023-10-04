@@ -127,8 +127,9 @@ const Game = (() => {
 
         if (checkWin(GameBoard.getGameboard())) {
             gameOver = true;
-            console.log("win");
             GameBoard.disable();
+            const banner = document.getElementById(`win-${players[currentPlayerIndex]}`);
+            banner.firstElementChild.classList.add('active');
         }
         else if (checkTie(GameBoard.getGameboard())) {
             gameOver = true;

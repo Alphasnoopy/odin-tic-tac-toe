@@ -103,11 +103,13 @@ const Game = (() => {
     let players = [];
     let currentPlayerIndex;
     let gameOver;
+    let banners;
 
     const start = () => {
         players = ['X', 'O'];
         currentPlayerIndex = 0;
         gameOver = false;
+        banners = document.querySelectorAll('.winnerBanner');
         
         GameBoard.render();
 
@@ -128,10 +130,13 @@ const Game = (() => {
         if (checkWin(GameBoard.getGameboard())) {
             gameOver = true;
             GameBoard.disable();
-            const banner = document.getElementById(`win-${players[currentPlayerIndex]}`);
-            banner.firstElementChild.classList.add('active');
+            banners[currentPlayerIndex].firstElementChild.classList.add('active');
         }
         else if (checkTie(GameBoard.getGameboard())) {
+            banners.forEach((banner) => {
+                banner.firstElementChild.textContent = 'YOU TIED';
+                banner.firstElementChild.classList.add('active');
+            })
             gameOver = true;
         }
         else {

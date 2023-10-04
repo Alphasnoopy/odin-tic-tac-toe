@@ -28,13 +28,14 @@ header {
 .winnerBanner {
     visibility: hidden;
     overflow: hidden;
-    height: 16ch;
     writing-mode: vertical-lr;
     text-orientation: upright;
     letter-spacing: 10px;
     text-align: center;
     color: white;
     font-size: 45px;
+    white-space: nowrap;
+    text-align: end;
 }
 
 .winnerBanner > span.active {

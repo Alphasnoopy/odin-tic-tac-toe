@@ -2,6 +2,7 @@ const startFormBtn = document.querySelector(".startFormBtn");
 const playerForm = document.getElementById("playerForm");
 const overlay = document.querySelector(".overlay");
 
+// Factory to create each square for grid
 const newNode = (square, index) => {
     const gameSquare = document.createElement("div");
     gameSquare.classList.add("square");
@@ -12,6 +13,7 @@ const newNode = (square, index) => {
     return gameSquare;
 }
 
+// GameBoard module
 const GameBoard = (() => {
     let gameboard = ["", "", "", "", "", "", "", "", ""];
 
@@ -70,6 +72,7 @@ const GameBoard = (() => {
     }
 })();
 
+// Apply animation to winning combo
 const winCombo = (winList) => {
     winList.forEach((num, index) => {
         const square = document.getElementById(`square-${num}`);
@@ -100,6 +103,7 @@ const checkTie = (board) => {
     return board.every(square => square !== "");
 }
 
+// Alternate arrow icon to indicate current player turn
 const turn = (currPlayer, nxtPlayer) => {
     const currSymbol = document.getElementById(currPlayer).firstElementChild;
     const nxtSymbol = document.getElementById(nxtPlayer).firstElementChild;
@@ -108,6 +112,7 @@ const turn = (currPlayer, nxtPlayer) => {
     nxtSymbol.classList.remove('active');
 }
 
+// Game module
 const Game = (() => {
     let players = [];
     let currentPlayerIndex;
@@ -154,6 +159,7 @@ const Game = (() => {
             gameOver = true;
         }
         else {
+            // Change players only when valid square is chosen (ie. Prevent players from overwriting previously chosen square)
             if (playerChange) {
                 if (currentPlayerIndex === 0) {
                     currentPlayerIndex = 1;

@@ -128,6 +128,10 @@ const Game = (() => {
         reset.addEventListener("click", () =>{
             GameBoard.clear();
             start();
+            banners.forEach((banner) => {
+                banner.firstElementChild.classList.remove('active');
+                banner.firstElementChild.textContent = 'WINNER';
+            })
         })
     }
 

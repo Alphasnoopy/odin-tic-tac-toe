@@ -166,3 +166,17 @@ header {
     90% { transform: translateX(1px) }
     100% { transform: translateX(0) }
 }
+
+footer {
+    position: fixed;
+    color: white;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+#git:link,
+#git:visited {
+    color: white;
+}

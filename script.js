@@ -56,7 +56,7 @@ const GameBoard = (() => {
         const squares = document.querySelectorAll('.square');
 
         squares.forEach((square) => {
-            square.firstElementChild.classList.add('active');
+            square.firstElementChild.classList.add('active-tie');
         })
     }
 
@@ -73,7 +73,7 @@ const GameBoard = (() => {
 const winCombo = (winList) => {
     winList.forEach((num, index) => {
         const square = document.getElementById(`square-${num}`);
-        square.firstElementChild.classList.add('active', `win-${index+1}`);
+        square.firstElementChild.classList.add('active-win', `win-${index+1}`);
     })
 }
 

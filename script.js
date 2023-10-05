@@ -52,12 +52,21 @@ const GameBoard = (() => {
 
     const clear = () => {gameboard = ["", "", "", "", "", "", "", "", ""]}
 
+    const shake = () => {
+        const squares = document.querySelectorAll('.square');
+
+        squares.forEach((square) => {
+            square.firstElementChild.classList.add('active');
+        })
+    }
+
     return {
         render,
         update,
         getGameboard,
         disable,
         clear,
+        shake,
     }
 })();
 
@@ -137,6 +146,7 @@ const Game = (() => {
                 banner.firstElementChild.textContent = 'YOU TIED';
                 banner.firstElementChild.classList.add('active');
             })
+            GameBoard.shake();
             gameOver = true;
         }
         else {
